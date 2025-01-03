@@ -7,7 +7,6 @@ import 'package:jewellery/Screens/Regester_Screens/new_pass_screen.dart';
 import 'package:jewellery/Screens/Regester_Screens/otp_screen.dart';
 import 'package:jewellery/Screens/Regester_Screens/sign_in_screen.dart';
 import 'package:jewellery/Screens/Regester_Screens/sign_up_screen.dart';
-import 'package:jewellery/Screens/Home_Screen/home_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -23,7 +22,7 @@ class AppRoutes {
     switch (settings.name) {
       // Splash Screen
       case splash:
-        return CupertinoPageRoute(builder: (_) => SplashScreen());
+        return CupertinoPageRoute(builder: (_) => const SplashScreen());
 
       // SignUp Screen
       case AppRoutes.signUp:
@@ -46,8 +45,8 @@ class AppRoutes {
         return CupertinoPageRoute(builder: (_) => const ChangeNewPassword());
 
       // Home Screen
-      case AppRoutes.homeScreen:
-        return CupertinoPageRoute(builder: (_) => const HomeScreen());
+      // case AppRoutes.homeScreen:
+      //   return CupertinoPageRoute(builder: (_) => const MainScreen());
 
       // Main Screen
       case AppRoutes.mainScreen:

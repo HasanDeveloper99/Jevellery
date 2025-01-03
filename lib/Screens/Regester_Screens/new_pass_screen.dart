@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Comman/fonts.dart';
 import 'package:jewellery/Comman/padding_and_size.dart';
+import 'package:jewellery/Comman/routes.dart';
 import 'package:jewellery/Screens/Regester_Screens/Comman/custom_button.dart';
 import 'package:jewellery/Screens/Regester_Screens/Comman/password_field.dart';
 
@@ -59,7 +60,9 @@ class _ChangeNewPasswordState extends State<ChangeNewPassword> {
                     ),
                     kSize30,
                     CustomButton(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, AppRoutes.signin);
+                      },
                       buttonName: 'Change Password',
                       buttonColor: kButtonColor,
                     ),

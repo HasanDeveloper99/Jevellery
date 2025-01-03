@@ -50,6 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
                     kSize15,
@@ -112,7 +113,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     kSize30,
                     CustomButton(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, AppRoutes.signin);
+                      },
                       buttonName: 'Sign Up',
                       buttonColor: kButtonColor,
                     ),

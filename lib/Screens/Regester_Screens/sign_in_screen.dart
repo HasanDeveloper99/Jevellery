@@ -34,11 +34,12 @@ class _SignInScreenState extends State<SignInScreen> {
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   kSize15,
                   const Text(
-                    "Login here",
+                    "Sign in here",
                     style: TextStyle(
                       fontSize: 28,
                       color: Color.fromARGB(255, 58, 5, 67),

@@ -39,16 +39,44 @@ class _PartiesScreenState extends State<PartiesScreen>
     return DefaultTabController(
       length: 2,
       child: Container(
-        decoration: const BoxDecoration(
-          gradient: kBGColor,
+        decoration: BoxDecoration(
+          color: kWhiteColor,
         ),
         child: Scaffold(
           backgroundColor: kTransparentColor,
+          appBar: AppBar(
+            iconTheme: const IconThemeData(color: kWhiteColor),
+            leading: const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 22,
+              color: kBlackColor,
+            ),
+            centerTitle: true,
+            title: const Text(
+              "Parties",
+              style: TextStyle(
+                fontSize: 19,
+                color: kBlackColor,
+                fontFamily: kFontFamily,
+              ),
+            ),
+            backgroundColor: kWhiteColor,
+            surfaceTintColor: kTransparentColor,
+            actions: const [
+              Padding(
+                padding: EdgeInsets.only(right: 15.0),
+                child: Icon(
+                  Icons.notification_add,
+                  color: kBlackColor,
+                ),
+              ),
+            ],
+          ),
           body: Column(
             children: [
               TabBar(
                 controller: _tabController,
-                indicatorColor: kBlackColor,
+                indicatorColor: kAppBarColor,
                 indicatorWeight: 4.0,
                 tabs: [
                   Tab(
@@ -56,7 +84,7 @@ class _PartiesScreenState extends State<PartiesScreen>
                       'CUSTOMERS',
                       style: TextStyle(
                         color:
-                            _selectedIndex == 0 ? kBlackColor : Colors.black26,
+                            _selectedIndex == 0 ? kAppBarColor : Colors.black26,
                         fontWeight: FontWeight.w600,
                         fontSize: 16,
                         fontFamily: kFontFamily,
@@ -68,7 +96,7 @@ class _PartiesScreenState extends State<PartiesScreen>
                       'SUPPLIERS',
                       style: TextStyle(
                         color:
-                            _selectedIndex == 1 ? kBlackColor : Colors.black26,
+                            _selectedIndex == 1 ? kAppBarColor : Colors.black26,
                         fontWeight: FontWeight.w600,
                         fontSize: 16,
                         fontFamily: kFontFamily,

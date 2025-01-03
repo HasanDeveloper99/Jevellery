@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jewellery/Screens/Dummy%202/add_category_screen.dart';
+import 'package:jewellery/Screens/Main_Screen/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       // initialRoute: AppRoutes.splash,
       // onGenerateRoute: AppRoutes.generateRoute,
-      home: HomeScreen(),
+      home: const MainScreen(),
     );
   }
 }

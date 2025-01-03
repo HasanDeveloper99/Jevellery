@@ -78,8 +78,8 @@ class _PasswordFieldState extends State<PasswordField> {
               },
               child: Container(
                 child: _isPasswordVisible
-                    ? Icon(Icons.visibility)
-                    : Icon(Icons.visibility_off),
+                    ? const Icon(Icons.visibility)
+                    : const Icon(Icons.visibility_off),
               ),
             ),
           ),

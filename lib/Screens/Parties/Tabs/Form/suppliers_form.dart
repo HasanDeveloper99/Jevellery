@@ -116,7 +116,7 @@ class SupplierFormScreen extends StatelessWidget {
                     onChanged: (value) =>
                         supplierFormController.city.value = value,
                     controller: cityController,
-                    keyboardType: TextInputType.number,
+                    // keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       hintText: "Supplier City",
                       border: InputBorder.none,

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jewellery/Comman/colors.dart';
@@ -35,6 +36,42 @@ class _CustomerScreenState extends State<CustomerScreen> {
         backgroundColor: kTransparentColor,
         body: Column(
           children: [
+            kSize15,
+            Padding(
+              padding: kPadding15,
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  color: kWhiteColor,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Padding(
+                  padding: kPadding15,
+                  child: Row(
+                    children: [
+                      const Icon(
+                        CupertinoIcons.search,
+                        color: kBlackColor,
+                        size: 23,
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: TextFormField(
+                          decoration: const InputDecoration(
+                            hintText: "Search customers",
+                            border: InputBorder.none,
+                            hintStyle: TextStyle(
+                              fontFamily: kFontFamily,
+                              fontSize: 17,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
             Expanded(
               child: Obx(() {
                 if (customerFormController.customers.isEmpty) {
@@ -69,92 +106,98 @@ class _CustomerScreenState extends State<CustomerScreen> {
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 15,
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 15.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: kWhiteColor,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                      left: 10.0,
-                                      right: 10.0,
-                                      top: 10,
-                                      bottom: 10,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Customer Name: ${customer.name}",
-                                                style: style,
-                                                maxLines: 2,
-                                              ),
-                                              Text(
-                                                "Mobile Number: ${customer.mobile}",
-                                                style: style,
-                                                maxLines: 2,
-                                              ),
-                                              Text(
-                                                "Customer Village: ${customer.village}",
-                                                style: style,
-                                                maxLines: 2,
-                                              ),
-                                              Text(
-                                                "Customer Gender: ${customer.gender}",
-                                                style: style,
-                                                maxLines: 2,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-
-                                        // Width between two widgets
-
-                                        const SizedBox(width: 20),
-
-                                        // Edit and Delete Button
-                                        Column(
-                                          children: [
-                                            GestureDetector(
-                                              onTap: () {
-                                                customerFormController
-                                                    .editCustomer(index);
-                                                Get.to(CustomerFormScreen());
-                                              },
-                                              child: const Icon(
-                                                Icons.edit,
-                                                size: 25,
-                                                color: kGreenColor,
-                                              ),
-                                            ),
-                                            kSize15,
-                                            GestureDetector(
-                                              onTap: () {
-                                                customerFormController
-                                                    .deleteCustomer(index);
-                                              },
-                                              child: const Icon(
-                                                Icons.delete,
-                                                size: 25,
-                                                color: kRedColor,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                              child: ListTile(
+                                leading: const Icon(Icons.abc_outlined),
+                                title: Text(customer.name),
+                                subtitle: Text(customer.mobile),
+                                trailing: Text(customer.village),
                               ),
+                              // child: Padding(
+                              //   padding: const EdgeInsets.only(top: 15.0),
+                              //   child: Container(
+                              //     width: double.infinity,
+                              //     decoration: BoxDecoration(
+                              //       color: kWhiteColor,
+                              //       borderRadius: BorderRadius.circular(15),
+                              //     ),
+                              //     child: Padding(
+                              //       padding: const EdgeInsets.only(
+                              //         left: 10.0,
+                              //         right: 10.0,
+                              //         top: 10,
+                              //         bottom: 10,
+                              //       ),
+                              //       child: Row(
+                              //         mainAxisAlignment:
+                              //             MainAxisAlignment.spaceBetween,
+                              //         children: [
+                              //           Expanded(
+                              //             child: Column(
+                              //               crossAxisAlignment:
+                              //                   CrossAxisAlignment.start,
+                              //               children: [
+                              //                 Text(
+                              //                   "Customer Name: ${customer.name}",
+                              //                   style: style,
+                              //                   maxLines: 2,
+                              //                 ),
+                              //                 Text(
+                              //                   "Mobile Number: ${customer.mobile}",
+                              //                   style: style,
+                              //                   maxLines: 2,
+                              //                 ),
+                              //                 Text(
+                              //                   "Customer Village: ${customer.village}",
+                              //                   style: style,
+                              //                   maxLines: 2,
+                              //                 ),
+                              //                 Text(
+                              //                   "Customer Gender: ${customer.gender}",
+                              //                   style: style,
+                              //                   maxLines: 2,
+                              //                 ),
+                              //               ],
+                              //             ),
+                              //           ),
+
+                              //           // Width between two widgets
+
+                              //           const SizedBox(width: 20),
+
+                              //           // Edit and Delete Button
+                              //           Column(
+                              //             children: [
+                              //               GestureDetector(
+                              //                 onTap: () {
+                              //                   customerFormController
+                              //                       .editCustomer(index);
+                              //                   Get.to(CustomerFormScreen());
+                              //                 },
+                              //                 child: const Icon(
+                              //                   Icons.edit,
+                              //                   size: 25,
+                              //                   color: kGreenColor,
+                              //                 ),
+                              //               ),
+                              //               kSize15,
+                              //               GestureDetector(
+                              //                 onTap: () {
+                              //                   customerFormController
+                              //                       .deleteCustomer(index);
+                              //                 },
+                              //                 child: const Icon(
+                              //                   Icons.delete,
+                              //                   size: 25,
+                              //                   color: kRedColor,
+                              //                 ),
+                              //               ),
+                              //             ],
+                              //           ),
+                              //         ],
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                             );
                           },
                         ),
