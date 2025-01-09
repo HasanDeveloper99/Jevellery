@@ -3,34 +3,39 @@ import 'package:get/get.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Comman/fonts.dart';
 import 'package:jewellery/Comman/padding_and_size.dart';
-import 'package:jewellery/Screens/Parties/Tabs/Controller/supplier_controller.dart';
+import 'package:jewellery/Screens/Parties/Customer/Controller/customer_controller.dart';
+// import 'form_controller.dart';
 
-class SupplierFormScreen extends StatelessWidget {
-  final supplierFormController = Get.find<SupplierFormController>();
+class CustomerFormScreen extends StatelessWidget {
+  final customerFormController = Get.find<CustomerFormController>();
 
   // TextEditingControllers for each form field
   final nameController = TextEditingController();
   final mobileController = TextEditingController();
-  final cityController = TextEditingController();
-  SupplierFormScreen({super.key});
+  final villageController = TextEditingController();
+
+  CustomerFormScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    if (supplierFormController.supplierEditing.value) {
-      nameController.text = supplierFormController.name.value;
-      mobileController.text = supplierFormController.mobile.value;
-      cityController.text = supplierFormController.city.value;
+    // Set TextEditingController values if in editing mode
+    if (customerFormController.isEditing.value) {
+      nameController.text = customerFormController.name.value;
+      mobileController.text = customerFormController.mobile.value;
+      villageController.text = customerFormController.village.value;
     }
+
     return Container(
-      decoration: const BoxDecoration(
-        gradient: kBGColor,
+      decoration: BoxDecoration(
+        // gradient: kBGColor,
+        color: kGreyColor.shade300,
       ),
       child: Scaffold(
         backgroundColor: kTransparentColor,
         appBar: AppBar(
           backgroundColor: kTransparentColor,
           title: const Text(
-            'Add Supplier',
+            'Add Customer',
             style: TextStyle(
               fontFamily: kFontFamily,
             ),
@@ -42,6 +47,22 @@ class SupplierFormScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
+                // TextField(
+                //   controller: nameController,
+                //   decoration: const InputDecoration(labelText: 'Name'),
+                //   onChanged: (value) => customerFormController.name.value = value,
+                // ),
+                // TextField(
+                //   controller: mobileController,
+                //   decoration: const InputDecoration(labelText: 'Mobile Number'),
+                //   keyboardType: TextInputType.number,
+                //   onChanged: (value) => customerFormController.mobile.value = value,
+                // ),
+                // TextField(
+                //   controller: villageController,
+                //   decoration: const InputDecoration(labelText: 'Village'),
+                //   onChanged: (value) => customerFormController.village.value = value,
+                // ),
                 Container(
                   height: 55,
                   width: double.infinity,
@@ -51,10 +72,10 @@ class SupplierFormScreen extends StatelessWidget {
                   ),
                   child: TextFormField(
                     onChanged: (value) =>
-                        supplierFormController.name.value = value,
+                        customerFormController.name.value = value,
                     controller: nameController,
                     decoration: const InputDecoration(
-                      hintText: "Supplier Name",
+                      hintText: "Customer Name",
                       border: InputBorder.none,
                       hintStyle: TextStyle(
                         color: Colors.black87,
@@ -82,7 +103,7 @@ class SupplierFormScreen extends StatelessWidget {
                   ),
                   child: TextFormField(
                     onChanged: (value) =>
-                        supplierFormController.mobile.value = value,
+                        customerFormController.mobile.value = value,
                     controller: mobileController,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
@@ -114,11 +135,10 @@ class SupplierFormScreen extends StatelessWidget {
                   ),
                   child: TextFormField(
                     onChanged: (value) =>
-                        supplierFormController.city.value = value,
-                    controller: cityController,
-                    // keyboardType: TextInputType.number,
+                        customerFormController.village.value = value,
+                    controller: villageController,
                     decoration: const InputDecoration(
-                      hintText: "Supplier City",
+                      hintText: "Customer Village",
                       border: InputBorder.none,
                       hintStyle: TextStyle(
                         color: Colors.black87,
@@ -136,15 +156,25 @@ class SupplierFormScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 20),
+                Obx(() {
+                  return CustomDropdownButton(
+                    options: const ['Male', 'Female'],
+                    selectedValue: customerFormController.gender.value,
+                    onChanged: (value) {
+                      customerFormController.gender.value = value;
+                    },
+                  );
+                }),
                 kSize30,
                 Obx(() {
                   return SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: supplierFormController.isFormValid
+                      onPressed: customerFormController.isFormValid
                           ? () {
-                              supplierFormController.submitForm();
+                              customerFormController.submitForm();
                               Get.back();
                             }
                           : null,
@@ -152,12 +182,12 @@ class SupplierFormScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
-                        backgroundColor: supplierFormController.isFormValid
+                        backgroundColor: customerFormController.isFormValid
                             ? kButtonColor
                             : const Color.fromARGB(255, 126, 118, 241),
                       ),
                       child: const Text(
-                        'Add Supplier',
+                        'Add Customer',
                         style: TextStyle(
                           fontSize: 18,
                           color: kWhiteColor,
@@ -173,6 +203,91 @@ class SupplierFormScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomDropdownButton extends StatefulWidget {
+  final List<String> options;
+  final String selectedValue;
+  final ValueChanged<String> onChanged;
+
+  const CustomDropdownButton({
+    super.key,
+    required this.options,
+    required this.selectedValue,
+    required this.onChanged,
+  });
+
+  @override
+  _CustomDropdownButtonState createState() => _CustomDropdownButtonState();
+}
+
+class _CustomDropdownButtonState extends State<CustomDropdownButton> {
+  bool isOpen = false;
+
+  void toggleDropdown() {
+    setState(() {
+      isOpen = !isOpen;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        GestureDetector(
+          onTap: toggleDropdown,
+          child: Container(
+            height: 55,
+            padding: const EdgeInsets.only(left: 15),
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+              color: kWhiteColor,
+              borderRadius: BorderRadius.circular(13.0),
+              // border: Border.all(color: Colors.grey),
+            ),
+            child: Text(
+              widget.selectedValue.isEmpty
+                  ? "Choose Gender"
+                  : widget.selectedValue,
+              style: TextStyle(
+                color:
+                    widget.selectedValue.isEmpty ? Colors.grey : Colors.black,
+                fontSize: 18,
+                fontFamily: kFontFamily,
+              ),
+            ),
+          ),
+        ),
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          height: isOpen ? 100 : 0,
+          child: isOpen
+              ? ListView(
+                  children: widget.options.map((option) {
+                    return ListTile(
+                      dense: true,
+                      title: Text(
+                        option,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: kBlackColor,
+                          fontFamily: kFontFamily,
+                        ),
+                      ),
+                      // contentPadding: EdgeInsets.symmetric(vertical: 10),
+                      onTap: () {
+                        widget.onChanged(option);
+                        toggleDropdown();
+                      },
+                    );
+                  }).toList(),
+                )
+              : Container(),
+        ),
+      ],
     );
   }
 }

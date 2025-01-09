@@ -11,6 +11,7 @@ const kBlueColor = Colors.blue;
 const kAppBarColor = Color.fromARGB(255, 11, 49, 235);
 const kTransparentColor = Colors.transparent;
 const kBoarderColor = Colors.black54;
+const kShapeColor = Color.fromARGB(255, 58, 58, 59);
 const kButtonColor = Color.fromARGB(255, 17, 0, 255);
 const kPinkColor = Color.fromARGB(255, 160, 4, 56);
 const kDarkBlueColor = Color.fromARGB(255, 0, 102, 185);

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Comman/fonts.dart';
-import 'package:jewellery/Screens/Parties/Customer/Screen/customers.dart';
-import 'package:jewellery/Screens/Parties/Supplier/Screen/suppliers.dart';
+import 'package:jewellery/Screens/Parties/Supplier/Details/Tab/credit_tab.dart';
+import 'package:jewellery/Screens/Parties/Supplier/Details/Tab/debit_tab.dart';
 
-class PartiesScreen extends StatefulWidget {
-  const PartiesScreen({super.key});
+class SupplierDetails extends StatefulWidget {
+  const SupplierDetails({super.key});
 
   @override
-  State<PartiesScreen> createState() => _PartiesScreenState();
+  State<SupplierDetails> createState() => _SupplierDetailsState();
 }
 
-class _PartiesScreenState extends State<PartiesScreen>
+class _SupplierDetailsState extends State<SupplierDetails>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _selectedIndex = 0;
@@ -45,32 +45,79 @@ class _PartiesScreenState extends State<PartiesScreen>
         child: Scaffold(
           backgroundColor: kTransparentColor,
           appBar: AppBar(
-            iconTheme: const IconThemeData(color: kWhiteColor),
-            leading: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              size: 22,
-              color: kBlackColor,
-            ),
             centerTitle: true,
             title: const Text(
-              "Parties",
+              "Hasan",
               style: TextStyle(
                 fontSize: 19,
                 color: kBlackColor,
                 fontFamily: kFontFamily,
               ),
             ),
-            backgroundColor: kWhiteColor,
-            surfaceTintColor: kTransparentColor,
             actions: const [
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Icon(
-                  Icons.notification_add,
+                  Icons.edit,
                   color: kBlackColor,
                 ),
               ),
             ],
+          ),
+          bottomNavigationBar: BottomAppBar(
+            color: kWhiteColor,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      // Get.to(const CreditForm());
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: kGreenColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Credit",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: kWhiteColor,
+                            fontFamily: kFontFamily,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 15),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      // Get.to(const DebitForm());
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: kRedColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Debit",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: kWhiteColor,
+                            fontFamily: kFontFamily,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           body: Column(
             children: [
@@ -81,7 +128,7 @@ class _PartiesScreenState extends State<PartiesScreen>
                 tabs: [
                   Tab(
                     child: Text(
-                      'CUSTOMERS',
+                      'CREDIT',
                       style: TextStyle(
                         color:
                             _selectedIndex == 0 ? kAppBarColor : Colors.black26,
@@ -93,7 +140,7 @@ class _PartiesScreenState extends State<PartiesScreen>
                   ),
                   Tab(
                     child: Text(
-                      'SUPPLIERS',
+                      'DEBIT',
                       style: TextStyle(
                         color:
                             _selectedIndex == 1 ? kAppBarColor : Colors.black26,
@@ -109,8 +156,8 @@ class _PartiesScreenState extends State<PartiesScreen>
                 child: TabBarView(
                   controller: _tabController,
                   children: const [
-                    CustomerScreen(),
-                    SuppliersScreen(),
+                    CreditTab(),
+                    DebitTab(),
                   ],
                 ),
               ),

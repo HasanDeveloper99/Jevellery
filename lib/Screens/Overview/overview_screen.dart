@@ -170,7 +170,7 @@ class OverViewData1 extends StatelessWidget {
                             "₹ $green",
                             style: const TextStyle(
                               fontSize: 22,
-                              color: kGreenColor,
+                              color: kDarkGreenColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
                               overflow: TextOverflow.ellipsis,
@@ -180,7 +180,7 @@ class OverViewData1 extends StatelessWidget {
                             "( આપવાના )",
                             style: TextStyle(
                               fontSize: 22,
-                              color: kGreenColor,
+                              color: kDarkGreenColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
                               overflow: TextOverflow.ellipsis,
@@ -282,7 +282,7 @@ class OverViewData2 extends StatelessWidget {
                             "₹ $green",
                             style: const TextStyle(
                               fontSize: 22,
-                              color: kGreenColor,
+                              color: kDarkGreenColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
                               overflow: TextOverflow.ellipsis,
@@ -292,7 +292,7 @@ class OverViewData2 extends StatelessWidget {
                             "Gram",
                             style: TextStyle(
                               fontSize: 22,
-                              color: kGreenColor,
+                              color: kDarkGreenColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
                               overflow: TextOverflow.ellipsis,
@@ -302,7 +302,7 @@ class OverViewData2 extends StatelessWidget {
                             "( આપવાનું )",
                             style: TextStyle(
                               fontSize: 22,
-                              color: kGreenColor,
+                              color: kDarkGreenColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
                               overflow: TextOverflow.ellipsis,
