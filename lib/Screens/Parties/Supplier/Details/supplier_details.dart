@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Comman/fonts.dart';
 import 'package:jewellery/Screens/Parties/Supplier/Details/Tab/credit_tab.dart';
 import 'package:jewellery/Screens/Parties/Supplier/Details/Tab/debit_tab.dart';
+import 'package:jewellery/Screens/Parties/Supplier/Form/supplier_credit_form.dart';
+import 'package:jewellery/Screens/Parties/Supplier/Form/supplier_debit_form.dart';
 
 class SupplierDetails extends StatefulWidget {
   const SupplierDetails({super.key});
@@ -72,7 +75,7 @@ class _SupplierDetailsState extends State<SupplierDetails>
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      // Get.to(const CreditForm());
+                      Get.to(SupplierCreditForm());
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -96,7 +99,7 @@ class _SupplierDetailsState extends State<SupplierDetails>
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      // Get.to(const DebitForm());
+                      Get.to(SupplierDebitForm());
                     },
                     child: Container(
                       decoration: BoxDecoration(
