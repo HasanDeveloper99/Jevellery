@@ -20,18 +20,21 @@ class _CustomerEntryDetailsState extends State<CustomerEntryDetails> {
       color: kBlackColor,
       fontFamily: kFontFamily,
       fontWeight: FontWeight.w500,
+      overflow: TextOverflow.ellipsis,
     );
     final style2 = TextStyle(
       fontSize: 18,
       color: kBlackColor.withOpacity(0.8),
       fontFamily: kFontFamily,
       fontWeight: FontWeight.w500,
+      overflow: TextOverflow.ellipsis,
     );
     const amountStyle = TextStyle(
       fontSize: 18,
       color: kDarkGreenColor,
       fontFamily: kFontFamily,
       fontWeight: FontWeight.w500,
+      overflow: TextOverflow.ellipsis,
     );
     return Scaffold(
       appBar: AppBar(
@@ -100,12 +103,37 @@ class _CustomerEntryDetailsState extends State<CustomerEntryDetails> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
+                    "Type",
+                    style: style1,
+                  ),
+                  const SizedBox(width: 20),
+                  Flexible(
+                    child: Text(
+                      "Credit",
+                      style: style2,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                  ),
+                ],
+              ),
+              kSize3,
+              const Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
                     "Date",
                     style: style1,
                   ),
-                  Text(
-                    "Jan 06, 2025",
-                    style: style2,
+                  const SizedBox(width: 20),
+                  Flexible(
+                    child: Text(
+                      "Jan 06, 2025",
+                      style: style2,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
                   ),
                 ],
               ),
@@ -119,9 +147,35 @@ class _CustomerEntryDetailsState extends State<CustomerEntryDetails> {
                     "Amount",
                     style: style1,
                   ),
-                  Text(
-                    "₹ 10,000.00",
-                    style: amountStyle,
+                  SizedBox(width: 20),
+                  Flexible(
+                    child: Text(
+                      "₹ 10,000.00",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: amountStyle,
+                    ),
+                  ),
+                ],
+              ),
+              kSize3,
+              const Divider(),
+              kSize3,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "Weight/Fine",
+                    style: style1,
+                  ),
+                  const SizedBox(width: 20),
+                  Flexible(
+                    child: Text(
+                      "100 kg (Silver)",
+                      style: style2,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
                   ),
                 ],
               ),
@@ -134,8 +188,10 @@ class _CustomerEntryDetailsState extends State<CustomerEntryDetails> {
               ),
               kSize3,
               Text(
-                "This Entries Is Completed.",
+                "This entry has additional details",
                 style: style2,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
               ),
               kSize35,
               CommanButton(

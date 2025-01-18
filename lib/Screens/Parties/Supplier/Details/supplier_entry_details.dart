@@ -197,7 +197,7 @@ class _SupplierEntryDetailsState extends State<SupplierEntryDetails> {
               CommanButton(
                 buttonText: "Edit Entry",
                 onTap: () {},
-              )
+              ),
             ],
           ),
         ),

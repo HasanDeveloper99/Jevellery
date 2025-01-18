@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:jewellery/Comman/button.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Comman/fonts.dart';
@@ -31,7 +32,7 @@ class SupplierCreditForm extends StatelessWidget {
             () => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Date Picker
+                // Date
                 GestureDetector(
                   onTap: () => controller.selectDate(context),
                   child: Container(
@@ -44,7 +45,9 @@ class SupplierCreditForm extends StatelessWidget {
                       borderRadius: BorderRadius.circular(13.0),
                     ),
                     child: Text(
-                      controller.selectedDate.value.toString().split(' ')[0],
+                      // controller.selectedDate.value.toString().split(' ')[0],
+                      DateFormat('dd-MM-yyyy')
+                          .format(controller.selectedDate.value),
                       style: const TextStyle(
                         fontSize: 18,
                         fontFamily: kFontFamily,
@@ -187,6 +190,7 @@ class SupplierCreditForm extends StatelessWidget {
 
                 // Submit Button
                 CommanButton(
+                  buttonColor: kGreenColor,
                   buttonText: "Add Credit Entry",
                   onTap: () {
                     controller.submitForm();

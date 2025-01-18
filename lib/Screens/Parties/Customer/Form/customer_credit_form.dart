@@ -4,84 +4,12 @@ import 'package:intl/intl.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Comman/fonts.dart';
 import 'package:jewellery/Comman/padding_and_size.dart';
+import 'package:jewellery/Screens/Parties/Customer/Controller/customer_credit_controller.dart';
 
-class CustomerCreditForm extends StatefulWidget {
-  const CustomerCreditForm({super.key});
-
-  @override
-  _CustomerCreditFormState createState() => _CustomerCreditFormState();
-}
-
-class _CustomerCreditFormState extends State<CustomerCreditForm> {
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController _dateController = TextEditingController();
-  final TextEditingController _amountController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-  final TextEditingController _billNoController = TextEditingController();
-  final TextEditingController _weightController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    _dateController.text = DateFormat('yyyy-MM-dd').format(DateTime.now());
-  }
-
-  void _pickDate() async {
-    DateTime? selectedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
-    );
-
-    if (selectedDate != null) {
-      setState(() {
-        _dateController.text = DateFormat('yyyy-MM-dd').format(selectedDate);
-      });
-    }
-  }
-
-  void _addCredit() {
-    if (_dateController.text.isEmpty ||
-        _amountController.text.isEmpty ||
-        _descriptionController.text.isEmpty ||
-        _billNoController.text.isEmpty ||
-        _weightController.text.isEmpty) {
-      Get.snackbar(
-        "Error",
-        "Please fill all fields correctly",
-        backgroundColor: kRedColor,
-        colorText: kWhiteColor,
-        titleText: const Text(
-          "Error",
-          style: const TextStyle(
-            fontSize: 18,
-            color: kWhiteColor,
-            fontFamily: kFontFamily,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        messageText: const Text(
-          "Please fill all fields correctly",
-          style: TextStyle(
-            fontSize: 15,
-            color: kWhiteColor,
-            fontFamily: kFontFamily,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    } else {
-      // All fields are filled
-      print("Credit Added Successfully");
-      print("Date: ${_dateController.text}");
-      print("Amount: ${_amountController.text}");
-      print("Description: ${_descriptionController.text}");
-      print("Bill No: ${_billNoController.text}");
-      print("Weight: ${_weightController.text}");
-    }
-  }
+class CustomerCreditForm extends StatelessWidget {
+  final CustomerCreditController controller =
+      Get.put(CustomerCreditController());
+  CustomerCreditForm({super.key});
 
   final style = const TextStyle(
     fontSize: 18,
@@ -106,47 +34,40 @@ class _CustomerCreditFormState extends State<CustomerCreditForm> {
           centerTitle: true,
           titleTextStyle: const TextStyle(
             fontSize: 19,
-            color: kGreenColor,
+            color: kBlackColor,
             fontFamily: kFontFamily,
           ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
+          child: Obx(
+            () => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: _pickDate,
+                  onTap: () => controller.selectDate(context),
                   child: Container(
                     height: 55,
                     width: double.infinity,
+                    alignment: AlignmentDirectional.centerStart,
+                    padding: const EdgeInsets.only(left: 15.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(13.0),
                     ),
-                    child: AbsorbPointer(
-                      child: TextFormField(
-                        controller: _dateController,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: 15,
-                            horizontal: 15,
-                          ),
-                        ),
-                        style: style,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Please select a date";
-                          }
-                          return null;
-                        },
+                    child: Text(
+                      // controller.selectedDate.value.toString().split(' ')[0],
+                      DateFormat('dd-MM-yyyy')
+                          .format(controller.selectedDate.value),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontFamily: kFontFamily,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
                 ),
+
                 kSize15,
                 Container(
                   height: 55,
@@ -156,7 +77,7 @@ class _CustomerCreditFormState extends State<CustomerCreditForm> {
                     borderRadius: BorderRadius.circular(13.0),
                   ),
                   child: TextFormField(
-                    controller: _amountController,
+                    controller: controller.amountController,
                     keyboardType: TextInputType.number,
                     style: style,
                     decoration: InputDecoration(
@@ -170,6 +91,25 @@ class _CustomerCreditFormState extends State<CustomerCreditForm> {
                     ),
                   ),
                 ),
+
+                kSize15,
+
+                // Gold/Silver Selection
+                Row(
+                  children: [
+                    _buildOption(
+                      "Gold",
+                      isSelected: controller.selectedOption.value == "Gold",
+                      onTap: () => controller.setSelectedOption("Gold"),
+                    ),
+                    const SizedBox(width: 15),
+                    _buildOption(
+                      "Silver",
+                      isSelected: controller.selectedOption.value == "Silver",
+                      onTap: () => controller.setSelectedOption("Silver"),
+                    ),
+                  ],
+                ),
                 kSize15,
                 Container(
                   height: 55,
@@ -179,7 +119,7 @@ class _CustomerCreditFormState extends State<CustomerCreditForm> {
                     borderRadius: BorderRadius.circular(13.0),
                   ),
                   child: TextFormField(
-                    controller: _descriptionController,
+                    controller: controller.descriptionController,
                     style: style,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -201,7 +141,7 @@ class _CustomerCreditFormState extends State<CustomerCreditForm> {
                     borderRadius: BorderRadius.circular(13.0),
                   ),
                   child: TextFormField(
-                    controller: _billNoController,
+                    controller: controller.billController,
                     keyboardType: TextInputType.number,
                     style: style,
                     decoration: InputDecoration(
@@ -224,7 +164,7 @@ class _CustomerCreditFormState extends State<CustomerCreditForm> {
                     borderRadius: BorderRadius.circular(13.0),
                   ),
                   child: TextFormField(
-                    controller: _weightController,
+                    controller: controller.weightController,
                     keyboardType: TextInputType.number,
                     style: style,
                     decoration: InputDecoration(
@@ -240,12 +180,14 @@ class _CustomerCreditFormState extends State<CustomerCreditForm> {
                 ),
                 kSize20,
                 GestureDetector(
-                  onTap: _addCredit,
+                  onTap: () {
+                    controller.submitForm();
+                  },
                   child: Container(
                     height: 55,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: kButtonColor,
+                      color: kGreenColor,
                       borderRadius: BorderRadius.circular(13.0),
                     ),
                     child: const Center(
@@ -261,6 +203,29 @@ class _CustomerCreditFormState extends State<CustomerCreditForm> {
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOption(String label,
+      {required bool isSelected, required VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding:
+            const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+        decoration: BoxDecoration(
+          color: isSelected ? kButtonColor : kWhiteColor,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isSelected ? kWhiteColor : kButtonColor,
+            fontWeight: FontWeight.w500,
+            fontFamily: kFontFamily,
           ),
         ),
       ),

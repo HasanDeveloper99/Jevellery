@@ -123,68 +123,105 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                 onTap: () {
                                   Get.to(const CustomerDetails());
                                 },
-                                child: ListTile(
-                                  leading: Container(
-                                    height: 45,
-                                    width: 45,
-                                    decoration: const BoxDecoration(
-                                      color: kShapeColor,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(12.0),
-                                      child: Center(
-                                        child: Text(
-                                          data.name.substring(0, 1),
-                                          style: const TextStyle(
-                                            fontSize: 15,
-                                            color: kWhiteColor,
-                                            fontFamily: kFontFamily,
-                                            fontWeight: FontWeight.w500,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ListTile(
+                                      leading: Container(
+                                        height: 45,
+                                        width: 45,
+                                        decoration: const BoxDecoration(
+                                          color: kShapeColor,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(12.0),
+                                          child: Center(
+                                            child: Text(
+                                              data.name.substring(0, 1),
+                                              style: const TextStyle(
+                                                fontSize: 15,
+                                                color: kWhiteColor,
+                                                fontFamily: kFontFamily,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  title: Text(
-                                    data.name,
-                                    style: const TextStyle(
-                                      color: kBlackColor,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 18,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  subtitle: Text(
-                                    data.mobileNumber,
-                                    style: TextStyle(
-                                      color: kBlackColor.withOpacity(0.7),
-                                    ),
-                                  ),
-                                  trailing: const Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "₹ 10,000",
-                                        style: TextStyle(
-                                          color: kDarkGreenColor,
+                                      title: Text(
+                                        data.name,
+                                        style: const TextStyle(
+                                          color: kBlackColor,
                                           fontWeight: FontWeight.w500,
                                           fontSize: 18,
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
-                                      Text(
-                                        "( આપવાના )",
+                                      subtitle: Text(
+                                        data.mobileNumber,
                                         style: TextStyle(
-                                          color: kDarkGreenColor,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 16,
-                                          overflow: TextOverflow.ellipsis,
+                                          color: kBlackColor.withOpacity(0.7),
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                      trailing: const Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "₹ 10,000",
+                                            style: TextStyle(
+                                              color: kDarkGreenColor,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 18,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                          Text(
+                                            "( આપવાના )",
+                                            style: TextStyle(
+                                              color: kDarkGreenColor,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const Padding(
+                                      padding: kPadding15,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "G.W. : 50 gram ( આપવાનું )",
+                                            maxLines: 2,
+                                            style: TextStyle(
+                                              fontFamily: kFontFamily,
+                                              fontSize: 16,
+                                              color: kDarkGreenColor,
+                                              fontWeight: FontWeight.w500,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                          Text(
+                                            "S.W. : 100 kg ( લેવાનું )",
+                                            maxLines: 2,
+                                            style: TextStyle(
+                                              fontFamily: kFontFamily,
+                                              fontSize: 16,
+                                              color: kRedColor,
+                                              fontWeight: FontWeight.w500,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                          kSize3,
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

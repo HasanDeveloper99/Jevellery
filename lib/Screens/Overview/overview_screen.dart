@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Comman/fonts.dart';
 import 'package:jewellery/Comman/padding_and_size.dart';
+import 'package:jewellery/Screens/Notification/notification_screen.dart';
 
 class OverViewScreen extends StatefulWidget {
   const OverViewScreen({super.key});
@@ -74,12 +76,17 @@ class _OverViewScreenState extends State<OverViewScreen> {
         ),
         backgroundColor: kAppBarColor,
         surfaceTintColor: kTransparentColor,
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 15.0),
-            child: Icon(
-              Icons.notification_add,
-              color: kWhiteColor,
+            padding: const EdgeInsets.only(right: 15.0),
+            child: GestureDetector(
+              onTap: () {
+                Get.to(const NotificationScreen());
+              },
+              child: const Icon(
+                Icons.notification_add,
+                color: kWhiteColor,
+              ),
             ),
           ),
         ],
@@ -146,13 +153,14 @@ class OverViewData1 extends StatelessWidget {
           padding: kPadding10,
           child: Column(
             children: [
-              kSize10,
+              kSize15,
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   color: kBlackColor,
                   fontFamily: kFontFamily,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               kSize5,
@@ -174,7 +182,7 @@ class OverViewData1 extends StatelessWidget {
                           Text(
                             "₹ $green",
                             style: const TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               color: kDarkGreenColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
@@ -184,7 +192,7 @@ class OverViewData1 extends StatelessWidget {
                           const Text(
                             "( આપવાના )",
                             style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               color: kDarkGreenColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
@@ -201,7 +209,7 @@ class OverViewData1 extends StatelessWidget {
                           Text(
                             "₹ $red",
                             style: const TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               color: kRedColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
@@ -211,7 +219,7 @@ class OverViewData1 extends StatelessWidget {
                           const Text(
                             "( લેવાના )",
                             style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               color: kRedColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
@@ -258,13 +266,14 @@ class OverViewData2 extends StatelessWidget {
           padding: kPadding10,
           child: Column(
             children: [
-              kSize10,
+              kSize15,
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   color: kBlackColor,
                   fontFamily: kFontFamily,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               kSize5,
@@ -286,7 +295,7 @@ class OverViewData2 extends StatelessWidget {
                           Text(
                             "₹ $green",
                             style: const TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               color: kDarkGreenColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
@@ -296,7 +305,7 @@ class OverViewData2 extends StatelessWidget {
                           const Text(
                             "Gram",
                             style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               color: kDarkGreenColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
@@ -306,7 +315,7 @@ class OverViewData2 extends StatelessWidget {
                           const Text(
                             "( આપવાનું )",
                             style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               color: kDarkGreenColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
@@ -323,7 +332,7 @@ class OverViewData2 extends StatelessWidget {
                           Text(
                             "₹ $red",
                             style: const TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               color: kRedColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
@@ -333,7 +342,7 @@ class OverViewData2 extends StatelessWidget {
                           const Text(
                             "( Gram )",
                             style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               color: kRedColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,
@@ -343,7 +352,7 @@ class OverViewData2 extends StatelessWidget {
                           const Text(
                             "( લેવાનું )",
                             style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               color: kRedColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: kFontFamily,

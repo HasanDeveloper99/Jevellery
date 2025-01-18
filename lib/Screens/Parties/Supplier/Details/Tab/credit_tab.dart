@@ -85,7 +85,7 @@ class _CreditTabState extends State<CreditTab> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "2025-01-05",
+                                  "15-01-2025",
                                   style: style,
                                 ),
                                 kSize3,

@@ -44,7 +44,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(const CustomerDebitForm());
+                    Get.to(CustomerDebitForm());
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -68,7 +68,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(const CustomerCreditForm());
+                    Get.to(CustomerCreditForm());
                   },
                   child: Container(
                     decoration: BoxDecoration(

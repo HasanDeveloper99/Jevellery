@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Comman/fonts.dart';
+import 'package:jewellery/Screens/Notification/notification_screen.dart';
 import 'package:jewellery/Screens/Parties/Customer/Screen/customers.dart';
 import 'package:jewellery/Screens/Parties/Supplier/Screen/suppliers.dart';
 
@@ -62,12 +64,17 @@ class _PartiesScreenState extends State<PartiesScreen>
             ),
             backgroundColor: kWhiteColor,
             surfaceTintColor: kTransparentColor,
-            actions: const [
+            actions: [
               Padding(
-                padding: EdgeInsets.only(right: 15.0),
-                child: Icon(
-                  Icons.notification_add,
-                  color: kBlackColor,
+                padding: const EdgeInsets.only(right: 15.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(const NotificationScreen());
+                  },
+                  child: const Icon(
+                    Icons.notification_add,
+                    color: kBlackColor,
+                  ),
                 ),
               ),
             ],

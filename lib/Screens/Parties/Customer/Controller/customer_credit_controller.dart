@@ -3,12 +3,13 @@ import 'package:get/get.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Comman/fonts.dart';
 
-class SupplierCreditController extends GetxController {
+class CustomerCreditController extends GetxController {
   var selectedDate = DateTime.now().obs;
   var selectedOption = "Gold".obs;
   var selectedUnit = "Gram".obs;
 
   TextEditingController weightController = TextEditingController();
+  TextEditingController billController = TextEditingController();
   TextEditingController amountController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
@@ -35,6 +36,7 @@ class SupplierCreditController extends GetxController {
   void submitForm() {
     if (weightController.text.isEmpty ||
         amountController.text.isEmpty ||
+        billController.text.isEmpty ||
         descriptionController.text.isEmpty) {
       Get.snackbar(
         "Error",

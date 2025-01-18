@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:jewellery/Comman/button.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Comman/fonts.dart';
@@ -43,7 +44,8 @@ class SupplierDebitForm extends StatelessWidget {
                       borderRadius: BorderRadius.circular(13.0),
                     ),
                     child: Text(
-                      controller.selectedDate.value.toString().split(' ')[0],
+                      DateFormat('dd-MM-yyyy')
+                          .format(controller.selectedDate.value),
                       style: const TextStyle(
                         fontSize: 18,
                         fontFamily: kFontFamily,
@@ -187,6 +189,7 @@ class SupplierDebitForm extends StatelessWidget {
                 // Submit Button
                 CommanButton(
                   buttonText: "Add Debit Entry",
+                  buttonColor: kRedColor,
                   onTap: () {
                     controller.submitForm();
                   },
