@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'SFProRegular',
         appBarTheme: const AppBarTheme(
+          backgroundColor: kWhiteColor,
           titleTextStyle: TextStyle(
             fontSize: 19,
             color: kBlackColor,

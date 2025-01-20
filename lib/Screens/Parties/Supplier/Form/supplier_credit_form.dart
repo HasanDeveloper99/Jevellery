@@ -45,7 +45,6 @@ class SupplierCreditForm extends StatelessWidget {
                       borderRadius: BorderRadius.circular(13.0),
                     ),
                     child: Text(
-                      // controller.selectedDate.value.toString().split(' ')[0],
                       DateFormat('dd-MM-yyyy')
                           .format(controller.selectedDate.value),
                       style: const TextStyle(
@@ -111,47 +110,84 @@ class SupplierCreditForm extends StatelessWidget {
 
                 kSize15,
 
-                // Animated Dropdown Button
-
-                AnimatedDropdown(
-                  items: const ["Gram", "Kg"],
-                  selectedItem: controller.selectedUnit.value,
-                  onChanged: (String newValue) {
-                    controller.setSelectedUnit(newValue);
-                  },
-                ),
-
-                kSize15,
-
                 // Weight Field
-                Container(
-                  height: 55,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(13.0),
-                  ),
-                  child: TextField(
-                    controller: controller.weightController,
-                    keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                      hintText: "Weight / Fine",
-                      border: InputBorder.none,
-                      hintStyle: TextStyle(
-                        color: Colors.black87,
-                        fontFamily: kFontFamily,
-                        fontSize: 17,
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 15,
-                        horizontal: 15,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 55,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(13.0),
+                            ),
+                            child: TextField(
+                              controller: controller.weightController,
+                              keyboardType: TextInputType.number,
+                              onChanged: (value) {
+                                controller.updateWeightText();
+                              },
+                              decoration: const InputDecoration(
+                                hintText: "Weight / Fine",
+                                border: InputBorder.none,
+                                hintStyle: TextStyle(
+                                  color: Colors.black87,
+                                  fontFamily: kFontFamily,
+                                  fontSize: 17,
+                                ),
+                                contentPadding: EdgeInsets.symmetric(
+                                  vertical: 15,
+                                  horizontal: 15,
+                                ),
+                              ),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontFamily: kFontFamily,
+                              ),
+                            ),
+                          ),
+
+                          // Size
+                          controller.showWeightText.value
+                              ? kSize15
+                              : const SizedBox(),
+
+                          // Showing Value Text
+                          if (controller.showWeightText.value)
+                            Padding(
+                              padding: kPadding15,
+                              child: Text(
+                                controller.weightDisplayText.value,
+                                style: const TextStyle(
+                                  fontFamily: kFontFamily,
+                                  fontSize: 15,
+                                  color: kBlackColor,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                        ],
                       ),
                     ),
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontFamily: kFontFamily,
+                    const SizedBox(width: 15),
+                    Expanded(
+                      flex: 1,
+                      child: AnimatedDropdown(
+                        items: const ["Gram", "Kg"],
+                        selectedItem: controller.selectedUnit.value,
+                        onChanged: (String newValue) {
+                          controller.setSelectedUnit(newValue);
+                          controller.updateWeightText();
+                        },
+                      ),
                     ),
-                  ),
+                  ],
                 ),
 
                 kSize15,

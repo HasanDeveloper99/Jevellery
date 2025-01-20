@@ -48,6 +48,7 @@ class _SupplierDetailsState extends State<SupplierDetails>
         child: Scaffold(
           backgroundColor: kTransparentColor,
           appBar: AppBar(
+            backgroundColor: kWhiteColor,
             centerTitle: true,
             title: const Text(
               "Hasan",
