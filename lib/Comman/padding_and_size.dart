@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 
 const kSize3 = SizedBox(height: 3);
 const kSize5 = SizedBox(height: 5);
+const kSize9 = SizedBox(height: 9);
 const kSize10 = SizedBox(height: 10);
 const kSize15 = SizedBox(height: 15);
 const kSize20 = SizedBox(height: 20);

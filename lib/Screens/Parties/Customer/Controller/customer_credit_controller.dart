@@ -8,6 +8,9 @@ class CustomerCreditController extends GetxController {
   var selectedOption = "Gold".obs;
   var selectedUnit = "Gram".obs;
 
+  RxBool showWeightText = false.obs;
+  RxString weightDisplayText = "".obs;
+
   TextEditingController weightController = TextEditingController();
   TextEditingController billController = TextEditingController();
   TextEditingController amountController = TextEditingController();
@@ -31,6 +34,16 @@ class CustomerCreditController extends GetxController {
 
   void setSelectedUnit(String value) {
     selectedUnit.value = value;
+  }
+
+  void updateWeightText() {
+    String weight = weightController.text.trim();
+    if (weight.isNotEmpty) {
+      showWeightText.value = true;
+      weightDisplayText.value = "$weight ${selectedUnit.value}";
+    } else {
+      showWeightText.value = false;
+    }
   }
 
   void submitForm() {

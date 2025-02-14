@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jewellery/Comman/colors.dart';
+import 'package:jewellery/Screens/Bills/Screen/bills.dart';
+import 'package:jewellery/Screens/Items/Screen/items.dart';
 import 'package:jewellery/Screens/Overview/overview_screen.dart';
 import 'package:jewellery/Screens/Parties/parties.dart';
 
@@ -17,8 +19,8 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     const OverViewScreen(),
     const PartiesScreen(),
-    const OverViewScreen(),
-    const OverViewScreen(),
+    const BillsScreen(),
+    const ItemScreen(),
     const OverViewScreen(),
   ];
 

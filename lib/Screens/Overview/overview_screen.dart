@@ -156,10 +156,13 @@ class OverViewData1 extends StatelessWidget {
               kSize15,
               Text(
                 title,
+                textAlign: TextAlign.center,
+                maxLines: 1,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 19,
                   color: kBlackColor,
                   fontFamily: kFontFamily,
+                  overflow: TextOverflow.visible,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -269,10 +272,13 @@ class OverViewData2 extends StatelessWidget {
               kSize15,
               Text(
                 title,
+                textAlign: TextAlign.center,
+                maxLines: 1,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   color: kBlackColor,
                   fontFamily: kFontFamily,
+                  overflow: TextOverflow.ellipsis,
                   fontWeight: FontWeight.w600,
                 ),
               ),
