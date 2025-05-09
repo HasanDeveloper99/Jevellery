@@ -62,7 +62,7 @@ class _CategoryFormState extends State<CategoryForm> {
                     //     customerFormController.name.value = value,
                     // controller: nameController,
                     decoration: const InputDecoration(
-                      hintText: "Customer Name",
+                      hintText: "Category Name",
                       border: InputBorder.none,
                       hintStyle: TextStyle(
                         color: Colors.black87,

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Comman/fonts.dart';
+import 'package:jewellery/Comman/routes.dart';
 import 'package:jewellery/Screens/Main_Screen/main_screen.dart';
+import 'package:jewellery/Screens/On_Boarding_Screen/splash_screen.dart';
+import 'package:jewellery/Screens/Setting/Screen/setting_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,9 +33,9 @@ class MyApp extends StatelessWidget {
           surfaceTintColor: kTransparentColor,
         ),
       ),
-      // initialRoute: AppRoutes.splash,
-      // onGenerateRoute: AppRoutes.generateRoute,
-      home: const MainScreen(),
+      initialRoute: AppRoutes.splash,
+      onGenerateRoute: AppRoutes.generateRoute,
+      // home: const SplashScreen(),
     );
   }
 }

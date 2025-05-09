@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jewellery/Comman/colors.dart';
 import 'package:jewellery/Screens/Bills/Screen/bills.dart';
-import 'package:jewellery/Screens/Items/Screen/items.dart';
+import 'package:jewellery/Screens/Items/Screen/category.dart';
 import 'package:jewellery/Screens/Overview/overview_screen.dart';
 import 'package:jewellery/Screens/Parties/parties.dart';
+import 'package:jewellery/Screens/Setting/Screen/setting_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -20,8 +21,8 @@ class _MainScreenState extends State<MainScreen> {
     const OverViewScreen(),
     const PartiesScreen(),
     const BillsScreen(),
-    const ItemScreen(),
-    const OverViewScreen(),
+    const CategoryScreen(),
+    const SettingScreen(),
   ];
 
   @override

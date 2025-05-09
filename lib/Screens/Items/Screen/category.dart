@@ -7,14 +7,14 @@ import 'package:jewellery/Screens/Items/Data/category_data.dart';
 import 'package:jewellery/Screens/Items/Form/category_form.dart';
 import 'package:jewellery/Screens/Notification/notification_screen.dart';
 
-class ItemScreen extends StatefulWidget {
-  const ItemScreen({super.key});
+class CategoryScreen extends StatefulWidget {
+  const CategoryScreen({super.key});
 
   @override
-  State<ItemScreen> createState() => _ItemScreenState();
+  State<CategoryScreen> createState() => _CategoryScreenState();
 }
 
-class _ItemScreenState extends State<ItemScreen> {
+class _CategoryScreenState extends State<CategoryScreen> {
   final style = const TextStyle(
     fontFamily: kFontFamily,
     fontSize: 19,
